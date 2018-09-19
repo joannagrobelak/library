@@ -3,6 +3,7 @@ package com.library.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -18,8 +19,6 @@ public class Loan {
     @Column(name = "LOAN_ID")
     private long loanId;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "BOOK_ID")
     private Book book;
 
     @ManyToOne
@@ -31,4 +30,7 @@ public class Loan {
 
     @Column(name = "DUE_DATE")
     private LocalDate dueDate;
+
+    @Column(name = "ACTUAL_DATE_OF_RETURN")
+    private LocalDate actualDateOfReturn;
 }

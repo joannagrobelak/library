@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -24,4 +26,16 @@ public class Book {
     @Column(name = "STATUS")
     @Enumerated(EnumType.STRING)
     private BookStatus bookStatus;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "LOAN_ID")
+    private Loan loan;
+
+    @OneToMany(
+            targetEntity = Member.class,
+            mappedBy = "book",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    private List<Member> bookReadBy = new ArrayList<>();
 }

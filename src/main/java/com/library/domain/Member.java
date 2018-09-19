@@ -36,4 +36,8 @@ public class Member {
             fetch = FetchType.LAZY
     )
     private List<Loan> loans = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "BOOK_ID")
+    private Book book;
 }
