@@ -20,6 +20,13 @@ public class LoanDto {
     private Member member;
     private LocalDate onLoanFrom;
     private LocalDate dueDate;
+    private LocalDate actualDateOfReturn;
+
+    public LoanDto(long loanId, Book book, Member member) {
+        this.loanId = loanId;
+        this.book = book;
+        this.member = member;
+    }
 }
 
 

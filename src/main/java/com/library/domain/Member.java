@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -27,7 +27,7 @@ public class Member {
     private String lastName;
 
     @Column(name = "CREATED")
-    private LocalDate accountCreationDate;
+    private Date accountCreationDate;
 
     @OneToMany(
             targetEntity = Loan.class,
@@ -40,4 +40,10 @@ public class Member {
     @ManyToOne
     @JoinColumn(name = "BOOK_ID")
     private Book book;
+
+    public Member(long memberId, String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.accountCreationDate = new Date();
+    }
 }

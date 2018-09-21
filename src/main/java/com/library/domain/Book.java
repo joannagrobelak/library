@@ -3,12 +3,14 @@ package com.library.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "BOOKS")
@@ -38,4 +40,10 @@ public class Book {
             fetch = FetchType.LAZY
     )
     private List<Member> bookReadBy = new ArrayList<>();
+
+    public Book(long bookId, Title title, BookStatus bookStatus) {
+        this.bookId = bookId;
+        this.title = title;
+        this.bookStatus = bookStatus;
+    }
 }
