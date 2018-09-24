@@ -20,6 +20,7 @@ public class Loan {
     @Column(name = "LOAN_ID")
     private long loanId;
 
+    @OneToOne
     private Book book;
 
     @ManyToOne
